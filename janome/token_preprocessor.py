@@ -97,3 +97,15 @@ class TokenPreprocessor:
         common_words = {word for word, freq in fdist.most_common(threshold)}
         return common_words
 
+    def filter_by_part_of_speeches(self, part_of_speeches):
+        """
+        Filter tokens by given part of speeches.
+        The tokens whose part of speech matches one of "part_of_speeches" will be extracted.
+
+        Parameters
+        ----------
+        part_of_speeches : list of str
+            The list of part of speeches to be used for filtering tokens.
+        """
+        self.result = [[token for token in sentence if any(x in token.part_of_speech for x in part_of_speech_list)]
+                              for sentence in self.result]
