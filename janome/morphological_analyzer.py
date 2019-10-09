@@ -17,6 +17,7 @@ class MorphologicalAnalyzer:
             The list of texts which is the target of a morphological analysis.
         """
         self.text_list = text_list
+        self.result = None
 
     def analyze(self, udic_file_name=None, udic_type='ipadic'):
         """
@@ -54,4 +55,5 @@ class MorphologicalAnalyzer:
             tokens = t.tokenize(text)
             if len(tokens) > 0:
                 tokenized_list.append(tokens)
-        return tokenized_list
+        self.result = tokenized_list
+       
